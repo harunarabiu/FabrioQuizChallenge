@@ -106,7 +106,7 @@ export default function App() {
   }
 
   const nextQuestion= () => {
-
+    setSelectedAnswers([])
     if(activeQuestionIndex ===  -1) {
       setActiveQuestionIndex(0)
       return;
