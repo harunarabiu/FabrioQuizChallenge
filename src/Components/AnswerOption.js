@@ -18,7 +18,7 @@ export default function AnswerOption(props) {
   return (
 
         <div  className={classNames(
-          checked ? 'border-indigo-300 ring-1 ring-indigo-300' : '',
+          (checked && !props.revealAnswers) ? 'border-indigo-300 ring-1 ring-indigo-300' : '',
           props.revealAnswers ? (props.option.isCorrect === 'true' ? 'border-green-300 ring-1 ring-green-300' : 'border-red-300 ring-1 ring-red-300') : '',
           'relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:space-between focus:outline-none'
         )

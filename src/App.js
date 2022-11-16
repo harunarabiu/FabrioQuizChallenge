@@ -55,7 +55,7 @@ export default function App() {
   }
 
   const checkAnswer = () => {
-    
+    setRevealAnswers(false)
     if(selectedAnswers === "undefined" || selectedAnswers.length<=0){
       //No Answer is selected
       setShowResult(true)
@@ -98,6 +98,7 @@ export default function App() {
 
   const nextQuestion= () => {
     setSelectedAnswers([])
+    setRevealAnswers(false)
     if(activeQuestionIndex ===  -1) {
       setActiveQuestionIndex(0)
       return;
@@ -162,14 +163,22 @@ export default function App() {
             ) : (
               <div className="text-center">
                 <h3 className="mt-2 text-sm font-medium text-gray-900">Quiz Completed</h3>
-                <div className="mt-6">
+                <div className=" flex justify-evenly mt-6">
                   <button
                     onClick={previousQuestion}
                     type="button"
-                    className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray b-gray-600 hover:bg-white-700 focus:outline-none "
                   >
                   
                     Retake Quiz
+                  </button>
+                  <button
+                    onClick={previousQuestion}
+                    type="button"
+                    className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
+                  >
+                  
+                    Continue
                   </button>
                 </div>
               </div>
@@ -183,14 +192,20 @@ export default function App() {
 
       </div>
 
-      <div className="px-6 py-4 bg-gray-700 shadow">
+      {
+        activeQuestionIndex !== -1 ? (
+        
+        <div className="px-6 py-4 bg-gray-700 shadow">
 
         <div className="flex justify-end ">
-            <button  onClick={nextQuestion} className="ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Next
-            </button>
+              <button  onClick={nextQuestion} className="ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  Next
+              </button>
+          </div>
         </div>
-      </div>
+      ) : ''
+      }
+      
 
     </>
   )
