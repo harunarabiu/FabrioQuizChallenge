@@ -11,7 +11,7 @@ import Modal from './Components/Modal'
 
 
 
-export default function Example() {
+export default function App() {
   const [questions, setQuestions] = useState([])
   const [user, setUser] = useState({})
   const [loading, setLoading] = useState(false);
@@ -19,6 +19,7 @@ export default function Example() {
   const [selectedAnswers, setSelectedAnswers] = useState([])
   const [showResult, setShowResult] = useState(false)
   const [resultMessage, setResultMessage] = useState({type:"incorrect", text:""})
+  const [revealAnswers, setRevealAnswers] = useState(false)
  
   
 
@@ -98,6 +99,12 @@ export default function Example() {
     setShowResult(false)
   }
 
+  const reveal = (option) => {
+    setShowResult(false)
+    setRevealAnswers(option);
+    
+  }
+
  
 
 
@@ -120,7 +127,7 @@ export default function Example() {
 
           <AnswerOptions>
             {question?.answerOptions.map((option, i) => {
-                  return <AnswerOption key={i} option={option} selectedOption={selectedOption}/>
+                  return <AnswerOption key={i} option={option} revealAnswers={revealAnswers} selectedOption={selectedOption} />
               })
             }
           </AnswerOptions>
@@ -138,7 +145,7 @@ export default function Example() {
           </div>
       </Quiz>
 
-      <Modal status={showResult} message={resultMessage} close={handleClose}/>
+      <Modal status={showResult} message={resultMessage} close={handleClose} revealAnswers={reveal}/>
 
       </div>
 

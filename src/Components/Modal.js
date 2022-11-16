@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon, CheckIcon } from '@heroicons/react/24/outline'
 
 export default function Modal(props) {
-
+  
   const cancelButtonRef = useRef(null)
 
   return (
@@ -83,7 +83,7 @@ export default function Modal(props) {
                             <button
                                 type="button"
                                 className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-2 sm:text-sm"
-                                >
+                                onClick={() => props.revealAnswers(true)}>
                                 Show Answers
                             </button>
                             <button
