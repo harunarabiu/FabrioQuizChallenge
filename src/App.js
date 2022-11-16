@@ -105,6 +105,27 @@ export default function App() {
     
   }
 
+  const nextQuestion= () => {
+
+    if(activeQuestionIndex ===  -1) {
+      setActiveQuestionIndex(0)
+      return;
+    }
+
+    if(questions.length < activeQuestionIndex+1 ){
+      setActiveQuestionIndex(activeQuestionIndex+1)
+    } else {
+      setActiveQuestionIndex(-1)
+    }
+
+  }
+
+  const previousQuestion= () => {
+
+    activeQuestionIndex === -1 ? setActiveQuestionIndex(0) : setActiveQuestionIndex(activeQuestionIndex-1)
+
+  }
+
  
 
 
@@ -121,32 +142,63 @@ export default function App() {
         
         <MainNav user={user}/>
         <Quiz>
-        <Question>
-          {question?.questionText}
-        </Question>
+        {
+            activeQuestionIndex >= 0 ? (
+              <>
+              <Question>
+                {question?.questionText}
+              </Question>
 
-          <AnswerOptions>
-            {question?.answerOptions.map((option, i) => {
-                  return <AnswerOption key={i} option={option} revealAnswers={revealAnswers} selectedOption={selectedOption} />
-              })
-            }
-          </AnswerOptions>
+                <AnswerOptions>
+                  {question?.answerOptions.map((option, i) => {
+                        return <AnswerOption key={i} option={option} revealAnswers={revealAnswers} selectedOption={selectedOption}/>
+                    })
+                  }
+                </AnswerOptions>
 
-          
-          <div className="pt-5">
-            <div className="flex justify-end">
-                <button
-                  type="submit"
-                  onClick={checkAnswer}
-                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Check Answer
-                </button>
+                
+                <div className="pt-5">
+                  <div className="flex justify-end">
+                      <button
+                        type="submit"
+                        onClick={checkAnswer}
+                        className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Check Answer
+                      </button>
+                    </div>
+                </div>
+              </>
+            ) : (
+              <div className="text-center">
+                <h3 className="mt-2 text-sm font-medium text-gray-900">Quiz Completed</h3>
+                <div className="mt-6">
+                  <button
+                    onClick={previousQuestion}
+                    type="button"
+                    className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                  
+                    Retake Quiz
+                  </button>
+                </div>
               </div>
-          </div>
+            )
+
+          }
+          
       </Quiz>
 
       <Modal status={showResult} message={resultMessage} close={handleClose} revealAnswers={reveal}/>
 
+      </div>
+
+      <div className="px-6 py-4 bg-gray-700 shadow">
+
+        <div className="flex justify-end ">
+            <button  onClick={nextQuestion} className="ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Next
+            </button>
+        </div>
       </div>
 
     </>
