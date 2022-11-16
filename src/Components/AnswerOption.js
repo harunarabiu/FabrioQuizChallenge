@@ -1,20 +1,24 @@
 import { useState } from 'react'
 
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function AnswerOption(props) {
+    
   const [checked, setChecked] = useState(false);
 
   const handleChecked = (option) => {
     setChecked(!checked);
+    props.selectedOption(option)
   }
 
   return (
 
         <div  className={classNames(
+          props.revealAnswers ? (props.option.isCorrect === 'true' ? 'border-green-300 ring-1 ring-green-300' : 'border-red-300 ring-1 ring-red-300') : '',
           checked ? 'border-indigo-300 ring-1 ring-indigo-300' : '',
           'relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:space-between focus:outline-none'
         )
