@@ -67,24 +67,25 @@ export default function App() {
   const checkAnswer = () => {
     
     if(selectedAnswers === "undefined" || selectedAnswers.length<=0){
+      //No Answer is selected
       setShowResult(true)
       resultMessage.type = "incorrect"
-      resultMessage.text = "No Answers is Selected"
       setResultMessage({...resultMessage})
       return;
     }
     if(question.answerOptions.filter((option) => option.isCorrect === "true" ).length !== selectedAnswers.length){
+      //Answers not complete
       setShowResult(true)
       resultMessage.type = "incorrect"
-      resultMessage.text = "Answers not complete"
       setResultMessage({...resultMessage})
       return;
     }
 
     if(selectedAnswers.filter((option) => option.isCorrect === "true" ).length !== selectedAnswers.length){
+      //Some of the selected answers are incorrect
       setShowResult(true)
       resultMessage.type = "incorrect"
-      resultMessage.text = "Some Answers are wrong"
+      
       setResultMessage({...resultMessage})
       return;
     }
