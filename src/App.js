@@ -121,7 +121,7 @@ export default function App() {
   }
 
   const previousQuestion= () => {
-
+    setSelectedAnswers([])
     activeQuestionIndex === -1 ? setActiveQuestionIndex(0) : setActiveQuestionIndex(activeQuestionIndex-1)
 
   }
