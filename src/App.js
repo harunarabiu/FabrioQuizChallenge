@@ -5,6 +5,7 @@ import Question from './Components/Question'
 import AnswerOption from './Components/AnswerOption'
 import AnswerOptions from './Components/AnswerOptions'
 import Modal from './Components/Modal'
+import data from './data.json';
 
 
 
@@ -29,26 +30,15 @@ export default function App() {
 
   }, [])
 
-  const ENDPOINT = "http://127.0.0.1:3030";
   const question = questions[activeQuestionIndex]?.data.getStep.stepQuiz
 
 
   const fetchData = () => {
 
-    setLoading(true)
-    fetch(`${ENDPOINT}/questions`)
-    .then(res => res.json())
-    .then(result => {
-        setQuestions([...result])
-
-    })
-
-    fetch(`${ENDPOINT}/users`)
-    .then(res => res.json())
-    .then(result => {
-        setUser(result[0])
-        setLoading(false)
-    })
+  
+    setQuestions([...data.questions])
+    setUser(data.users[0])
+    setLoading(false)
   }
 
   const selectedOption = (option) => {

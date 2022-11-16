@@ -1,0 +1,43 @@
+{   
+    "questions": [
+        {
+            "data": {
+            "getStep": {
+              "id": "0007-02-05",
+              "stepQuiz": {
+                "answerOptions": [
+                  {
+                    "answerText": "Animate him",
+                    "isCorrect": "true"
+                  },
+                  {
+                    "answerText": "Manufacture him",
+                    "isCorrect": "true"
+                  },
+                  {
+                    "answerText": "Modify him",
+                    "isCorrect": "true"
+                  },
+                  {
+                    "answerText": "Do nothing with him",
+                    "isCorrect": "false"
+                  }
+                ],
+                "questionText": "What can you do with Roland after modelling him?"
+              }
+            }
+          }
+        }
+    ] ,
+    
+    "users": [
+        {
+            "id": 1,
+            "first_name": "Haruna",
+            "last_name": "Rabiu",
+            "email": "test@fabrio.com",
+            "username": "test@fabrio.com",
+            "password": "pass0123"
+        }
+    ]
+  }

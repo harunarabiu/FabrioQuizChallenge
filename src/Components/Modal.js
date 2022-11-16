@@ -58,7 +58,7 @@ export default function Modal(props) {
                     props.message.type === "incorrect" ?
                     (
                         <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-red-900">
-                            Incorret!
+                            Incorrect!
                         </Dialog.Title>
                     ) :
                     (
